@@ -85,22 +85,22 @@ bool gameover(){
     //checking the win for Simple Rows and Simple Column
     for(int i=0; i<3; i++)
     if(board[i][0] == board[i][1] && board[i][0] == board[i][2] || board[0][i] == board[1][i] && board[0][i] == board[2][i])
-    return false;
+    return true;
 
     //checking the win for both diagonal
 
     if(board[0][0] == board[1][1] && board[0][0] == board[2][2] || board[0][2] == board[1][1] && board[0][2] == board[2][0])
-    return false;
+    return true;
 
     //Checking the game is in continue mode or not
     for(int i=0; i<3; i++)
     for(int j=0; j<3; j++)
     if(board[i][j] != 'X' && board[i][j] != 'O')
-    return true;
+    return false;
 
     //Checking the if game already draw
     draw = true;
-    return false;
+    return true;
 }
 
 //Program Main Method
@@ -109,7 +109,7 @@ int main()
 {
     cout<<"        T I C K -- T A C -- T O E -- G A M E         "<<endl;
     cout<<"                  FOR 2 PLAYERS "<<endl;
-    while(gameover()){
+    while(gameover()!=true){
         display_board();
         player_turn();
         gameover();
